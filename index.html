@@ -48,5 +48,175 @@
             flex-direction: column;
         }
 
-        .card:hover { transform: translateY(-10px
-                                            
+        .card:hover { transform: translateY(-10px); border-color: var(--cyan); box-shadow: 0 10px 30px rgba(0, 242, 255, 0.15); }
+        
+        .puan-header { font-size: 1.8rem; font-weight: 800; color: var(--gold); display: block; margin-bottom: 15px; text-align: center; border-bottom: 1px solid var(--tr-red); padding-bottom: 10px; }
+        
+        .stat-item { display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 0.95rem; }
+        .stat-item span { color: #ccc; }
+        .stat-item b { color: #fff; }
+        .vip-val { color: var(--cyan) !important; font-weight: 800; }
+        .special-val { color: #ff00ff !important; font-weight: 800; }
+
+        /* Kurallar Bölümü */
+        .rules-section {
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 25px;
+            padding: 35px;
+            border: 1px solid var(--tr-red);
+            margin-bottom: 50px;
+        }
+
+        .rules-section h2 { color: var(--tr-red); margin-top: 0; font-size: 1.5rem; text-transform: uppercase; border-left: 5px solid var(--tr-red); padding-left: 15px; }
+        .rules-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 15px; }
+        .rule { display: flex; gap: 10px; font-size: 0.9rem; color: #eee; line-height: 1.4; }
+        .rule b { color: var(--tr-red); min-width: 20px; font-size: 1.1rem; }
+
+        /* PATLAYAN İLETİŞİM KUTUSU */
+        .contact-card-v2 {
+            margin: 40px auto;
+            max-width: 550px;
+            background: rgba(0, 0, 0, 0.9);
+            border: 3px solid var(--tr-red);
+            border-radius: 30px;
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+            text-align: center;
+            animation: boxBlast 1.5s infinite ease-in-out;
+            box-shadow: 0 0 20px rgba(227, 10, 23, 0.5);
+        }
+
+        .main-alert-icon {
+            width: 60px; height: 60px;
+            background: var(--tr-red);
+            color: white;
+            border-radius: 50%;
+            font-size: 40px; font-weight: 900;
+            display: flex; align-items: center; justify-content: center;
+            box-shadow: 0 0 20px white;
+        }
+
+        .text-group { display: flex; flex-direction: column; gap: 8px; width: 100%; }
+        .title-msg { margin: 0; font-size: clamp(1.2rem, 4vw, 1.6rem); font-weight: 800; color: white; text-transform: uppercase; }
+
+        .id-box {
+            background: rgba(255, 215, 0, 0.15);
+            border: 2px solid var(--gold);
+            color: var(--gold);
+            padding: 12px 25px;
+            border-radius: 12px;
+            font-size: clamp(1.1rem, 4vw, 1.5rem);
+            font-weight: 900;
+            display: inline-block;
+            margin: 5px auto;
+            white-space: nowrap;
+        }
+
+        @keyframes boxBlast {
+            0% { transform: scale(1); border-color: var(--tr-red); box-shadow: 0 0 10px rgba(227, 10, 23, 0.4); }
+            50% { transform: scale(1.04); border-color: #fff; box-shadow: 0 0 40px rgba(227, 10, 23, 1), inset 0 0 20px rgba(255,255,255,0.1); }
+            100% { transform: scale(1); border-color: var(--tr-red); box-shadow: 0 0 10px rgba(227, 10, 23, 0.4); }
+        }
+
+        @media (max-width: 480px) {
+            .container { padding: 20px 10px; }
+            .grid { grid-template-columns: 1fr; }
+            .rules-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1 class="main-title">Yeni Ajans Açılış Partisi - Türkiye</h1>
+        <div class="date-badge">2026/03/06 - 2026/03/31</div>
+    </header>
+
+    <div class="grid">
+        <div class="card">
+            <span class="puan-header">20M Puan</span>
+            <div class="stat-item"><span>Aktive Host:</span> <b>6</b></div>
+            <div class="stat-item"><span>Coin Bonusu:</span> <b>400.000</b></div>
+            <div class="stat-item"><span>VIP Ödülü:</span> <b class="vip-val">VIP4 * 7 GÜN</b></div>
+            <div class="stat-item"><span>Özel Destek:</span> <b>/</b></div>
+        </div>
+
+        <div class="card">
+            <span class="puan-header">40M Puan</span>
+            <div class="stat-item"><span>Aktive Host:</span> <b>6</b></div>
+            <div class="stat-item"><span>Coin Bonusu:</span> <b>1.200.000</b></div>
+            <div class="stat-item"><span>VIP Ödülü:</span> <b class="vip-val">VIP4 * 10 GÜN</b></div>
+            <div class="stat-item"><span>Özel Destek:</span> <b>/</b></div>
+        </div>
+
+        <div class="card">
+            <span class="puan-header">80M Puan</span>
+            <div class="stat-item"><span>Aktive Host:</span> <b>10</b></div>
+            <div class="stat-item"><span>Coin Bonusu:</span> <b>2.400.000</b></div>
+            <div class="stat-item"><span>VIP Ödülü:</span> <b class="vip-val">VIP5 * 7 GÜN</b></div>
+            <div class="stat-item"><span>Özel Destek:</span> <b>/</b></div>
+        </div>
+
+        <div class="card">
+            <span class="puan-header">120M Puan</span>
+            <div class="stat-item"><span>Aktive Host:</span> <b>10</b></div>
+            <div class="stat-item"><span>Coin Bonusu:</span> <b>4.800.000</b></div>
+            <div class="stat-item"><span>VIP Ödülü:</span> <b class="vip-val">VIP5 * 10 GÜN</b></div>
+            <div class="stat-item"><span>Özel Destek:</span> <b>/</b></div>
+        </div>
+
+        <div class="card">
+            <span class="puan-header">160M Puan</span>
+            <div class="stat-item"><span>Aktive Host:</span> <b>15</b></div>
+            <div class="stat-item"><span>Coin Bonusu:</span> <b>6.400.000</b></div>
+            <div class="stat-item"><span>VIP Ödülü:</span> <b class="vip-val">VIP5 * 10 GÜN</b></div>
+            <div class="stat-item"><span>Özel Destek:</span> <b class="special-val">Celebrity Gift 15D</b></div>
+        </div>
+
+        <div class="card">
+            <span class="puan-header">320M Puan</span>
+            <div class="stat-item"><span>Aktive Host:</span> <b>20</b></div>
+            <div class="stat-item"><span>Coin Bonusu:</span> <b>16.000.000</b></div>
+            <div class="stat-item"><span>VIP Ödülü:</span> <b class="vip-val">VIP5 * 15 GÜN</b></div>
+            <div class="stat-item"><span>Özel Destek:</span> <b class="special-val">Celebrity Gift 30D</b></div>
+        </div>
+
+        <div class="card" style="border: 2px solid var(--gold);">
+            <span class="puan-header">800M Puan</span>
+            <div class="stat-item"><span>Aktive Host:</span> <b>30</b></div>
+            <div class="stat-item"><span>Coin Bonusu:</span> <b>40.000.000</b></div>
+            <div class="stat-item"><span>VIP Ödülü:</span> <b class="vip-val">VIP5 * 20 GÜN</b></div>
+            <div class="stat-item"><span>Özel Destek:</span> <b class="special-val">Celebrity Gift 60D</b></div>
+        </div>
+    </div>
+
+    <div class="rules-section">
+        <h2>Kurallar ve Şartlar</h2>
+        <div class="rules-grid">
+            <div class="rule"><b>1.</b> Her ajans açılış etkinliğine yalnızca bir kez katılabilir.</div>
+            <div class="rule"><b>2.</b> Ajanslar Minavoice'a katıldıktan sonraki ilk ay içinde başvurabilir.</div>
+            <div class="rule"><b>3.</b> Bonuslar ajans üyelerinin topladığı puanlar üzerinden hesaplanır.</div>
+            <div class="rule"><b>4.</b> Gerekli host sayısının katılımı etkinlik öncesi sağlanmalıdır.</div>
+            <div class="rule"><b>5.</b> Sadece <b>40.000 puan</b> barajını geçen yayıncılar aktif sayılır.</div>
+            <div class="rule"><b>6.</b> Başvuru 1 gün önceden yapılmalıdır. Zaman dilimi TSİ'dir (00:00-23:59).</div>
+            <div class="rule"><b>7.</b> Hile veya kural dışı işlemlerde bonus gönderilmez.</div>
+            <div class="rule"><b>8.</b> Bonuslar ertesi gün iletilir. VIP bonusu tüm ajans içindir.</div>
+        </div>
+    </div>
+
+    <div class="contact-card-v2">
+        <div class="main-alert-icon">!</div>
+        <div class="text-group">
+            <h3 class="title-msg">BAŞVURU İÇİN</h3>
+            <div class="id-box">[ ID: TR01 - TR02 ]</div>
+            <h3 class="title-msg">İLETİŞİME GEÇİNİZ</h3>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
