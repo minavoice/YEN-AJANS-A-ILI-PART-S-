@@ -3,81 +3,74 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Malkafa | Yeni Ajans Açılış Partisi</title>
+    <title>Malkafa | Ajans Açılış Partisi</title>
     <style>
         :root {
             --tr-red: #e30a17;
-            --deep-dark: #07080c;
-            --glass: rgba(255, 255, 255, 0.05);
+            --deep-dark: #0a0b10;
+            --glass: rgba(255, 255, 255, 0.08);
             --gold: #ffd700;
         }
 
         body {
             margin: 0;
             background-color: var(--deep-dark);
+            background-image: radial-gradient(circle at 50% -20%, #3e0a0a 0%, #0a0b10 60%);
             color: #ffffff;
-            font-family: 'Inter', -apple-system, sans-serif;
-            background-image: radial-gradient(circle at 50% 50%, rgba(227, 10, 23, 0.1) 0%, transparent 80%);
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
         }
 
         .container { max-width: 1200px; margin: 0 auto; padding: 40px 20px; }
 
-        header { text-align: center; margin-bottom: 60px; }
-        .main-title { font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 900; margin: 0; background: linear-gradient(to right, #fff, var(--tr-red)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        header { text-align: center; margin-bottom: 50px; }
+        .main-title { font-size: 2.8rem; font-weight: 900; color: var(--tr-red); text-transform: uppercase; margin: 0; text-shadow: 0 0 20px rgba(227, 10, 23, 0.4); }
+        .date-text { opacity: 0.7; letter-spacing: 2px; font-weight: bold; margin-top: 10px; }
 
-        /* Ödül Kartları Tasarımı */
+        /* Ödül Kartları */
         .grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
             margin-bottom: 60px;
         }
 
         .card {
             background: var(--glass);
             border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 25px;
-            padding: 30px 20px;
+            border-radius: 20px;
+            padding: 30px;
             text-align: center;
-            backdrop-filter: blur(15px);
-            transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
-        .card:hover { transform: translateY(-10px); border-color: var(--tr-red); background: rgba(227, 10, 23, 0.05); }
-        
-        /* Hareketli İkonlar */
-        .icon-box { width: 100px; height: 100px; margin: 0 auto 15px; display: flex; align-items: center; justify-content: center; }
-        .icon-box img { width: 100%; height: auto; display: block; filter: drop-shadow(0 5px 15px rgba(0,0,0,0.5)); }
+        .card:hover { transform: translateY(-10px); border-color: var(--tr-red); }
 
-        /* Hareket Animasyonları */
-        @keyframes float { 0% { transform: translateY(0px); } 50% { transform: translateY(-10px); } 100% { transform: translateY(0px); } }
-        @keyframes pulse { 0% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.05); opacity: 0.8; } 100% { transform: scale(1); opacity: 1; } }
-        @keyframes rotate { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+        .icon-3d { font-size: 50px; margin-bottom: 15px; display: block; filter: drop-shadow(0 5px 10px rgba(0,0,0,0.3)); }
+        .puan-label { font-size: 1.8rem; font-weight: 800; color: var(--gold); display: block; margin-bottom: 20px; border-bottom: 2px solid var(--tr-red); padding-bottom: 10px; }
 
-        .float-icon { animation: float 3s ease-in-out infinite; }
-        .pulse-icon { animation: pulse 2s ease-in-out infinite; }
-        .rotate-icon { animation: rotate 10s linear infinite; }
+        .stat { display: flex; justify-content: space-between; margin-bottom: 12px; font-size: 0.95rem; background: rgba(0,0,0,0.2); padding: 8px 12px; border-radius: 8px; }
+        .stat b { color: #00ffcc; }
 
-        .puan-tag { color: var(--gold); font-size: 1.5rem; font-weight: 800; margin-bottom: 15px; display: block; }
-        
-        .info-row { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 0.9rem; color: #ccc; }
-        .info-row b { color: #fff; }
-
-        /* Kurallar Bölümü */
-        .rules-wrapper {
-            background: rgba(255, 255, 255, 0.02);
-            border-radius: 30px;
+        /* Kurallar */
+        .rules-box {
+            background: rgba(227, 10, 23, 0.05);
+            border-radius: 25px;
             padding: 40px;
-            border: 1px solid rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(227, 10, 23, 0.2);
         }
 
-        .rules-wrapper h2 { color: var(--tr-red); border-left: 4px solid var(--tr-red); padding-left: 15px; margin-bottom: 30px; }
+        .rules-box h2 { color: var(--tr-red); text-transform: uppercase; margin-top: 0; }
+        .rules-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 15px; }
+        .rule-item { display: flex; align-items: flex-start; gap: 10px; font-size: 0.9rem; color: #ddd; }
+        .rule-item b { color: var(--tr-red); }
 
-        .rule-list { list-style: none; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-        .rule-item { display: flex; gap: 15px; font-size: 0.95rem; line-height: 1.5; color: #bbb; }
-        .num { color: var(--tr-red); font-weight: bold; }
-
-        @media (max-width: 768px) { .rule-list { grid-template-columns: 1fr; } }
+        @media (max-width: 600px) {
+            .rules-grid { grid-template-columns: 1fr; }
+            .main-title { font-size: 1.8rem; }
+        }
     </style>
 </head>
 <body>
@@ -85,11 +78,81 @@
 <div class="container">
     <header>
         <h1 class="main-title">Yeni Ajans Açılış Partisi - Türkiye</h1>
-        <p style="letter-spacing: 3px; opacity: 0.7;">2026/03/06 - 2026/03/31</p>
+        <div class="date-text">2026/03/06 - 2026/03/31</div>
     </header>
 
     <div class="grid">
         <div class="card">
-            <div class="icon-box float-icon">
-                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkCAYAAABw4pVUAAAACXBIWXMAAAsTAAALEwEAmpwYAAAFn0lEQVR4nO2dW2hcRRSG/5N0S40ptUlT64N5MBoVfRBRpAoiFwXv6IOfFPTBF6sgPvhgUVFEK4pU8EHFonjxgoUoiKigIl4oInhBUUTwQi+YmCbaJrUxpU3Nrnf7fUia7M7OnNlz5syemZ2P3N2Zs2dm154/f92zZ9b4Hh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eH
-                    
+            <span class="icon-3d">💎</span>
+            <span class="puan-label">20M Puan</span>
+            <div class="stat"><span>Aktif Host:</span> <b>6</b></div>
+            <div class="stat"><span>Coin Bonusu:</span> <b>400.000</b></div>
+            <div class="stat"><span>VIP Seviye:</span> <b>VIP4 * 7D</b></div>
+        </div>
+
+        <div class="card">
+            <span class="icon-3d">✨</span>
+            <span class="puan-label">40M Puan</span>
+            <div class="stat"><span>Aktif Host:</span> <b>6</b></div>
+            <div class="stat"><span>Coin Bonusu:</span> <b>1.200.000</b></div>
+            <div class="stat"><span>VIP Seviye:</span> <b>VIP4 * 10D</b></div>
+        </div>
+
+        <div class="card">
+            <span class="icon-3d">🔥</span>
+            <span class="puan-label">80M Puan</span>
+            <div class="stat"><span>Aktif Host:</span> <b>10</b></div>
+            <div class="stat"><span>Coin Bonusu:</span> <b>2.400.000</b></div>
+            <div class="stat"><span>VIP Seviye:</span> <b>VIP5 * 7D</b></div>
+        </div>
+
+        <div class="card">
+            <span class="icon-3d">🚀</span>
+            <span class="puan-label">120M Puan</span>
+            <div class="stat"><span>Aktif Host:</span> <b>10</b></div>
+            <div class="stat"><span>Coin Bonusu:</span> <b>4.800.000</b></div>
+            <div class="stat"><span>VIP Seviye:</span> <b>VIP5 * 10D</b></div>
+        </div>
+
+        <div class="card">
+            <span class="icon-3d">🎖️</span>
+            <span class="puan-label">160M Puan</span>
+            <div class="stat"><span>Aktif Host:</span> <b>15</b></div>
+            <div class="stat"><span>Coin Bonusu:</span> <b>6.400.000</b></div>
+            <div class="stat"><span>Özel Destek:</span> <b>Ünlü Hediyesi 15D</b></div>
+        </div>
+
+        <div class="card">
+            <span class="icon-3d">⭐</span>
+            <span class="puan-label">320M Puan</span>
+            <div class="stat"><span>Aktif Host:</span> <b>20</b></div>
+            <div class="stat"><span>Coin Bonusu:</span> <b>16.000.000</b></div>
+            <div class="stat"><span>Özel Destek:</span> <b>Ünlü Hediyesi 30D</b></div>
+        </div>
+
+        <div class="card" style="border: 2px solid var(--gold);">
+            <span class="icon-3d">👑</span>
+            <span class="puan-label">800M Puan</span>
+            <div class="stat"><span>Aktif Host:</span> <b>30</b></div>
+            <div class="stat"><span>Coin Bonusu:</span> <b>40.000.000</b></div>
+            <div class="stat"><span>Özel Destek:</span> <b>Ünlü Hediyesi 60D</b></div>
+        </div>
+    </div>
+
+    <div class="rules-box">
+        <h2>Kurallar ve Önemli Bilgiler</h2>
+        <div class="rules-grid">
+            <div class="rule-item"><b>1.</b> Her ajans etkinliğe sadece bir kez katılabilir.</div>
+            <div class="rule-item"><b>2.</b> Ajanslar katıldıktan sonraki ilk ay içinde başvurmalıdır.</div>
+            <div class="rule-item"><b>3.</b> Bonuslar sadece ajans üyelerinin puanlarıyla hesaplanır.</div>
+            <div class="rule-item"><b>4.</b> Host sayısının yeterliliğini etkinlik öncesi kontrol edin.</div>
+            <div class="rule-item"><b>5.</b> Sadece <b>40.000 puan</b> alan yayıncılar aktif sayılır.</div>
+            <div class="rule-item"><b>6.</b> Başvuru 1 gün önceden yapılmalıdır. Saatler TSİ baz alınır.</div>
+            <div class="rule-item"><b>7.</b> Hile veya illegal iş birliğinde ödül iptal edilir.</div>
+            <div class="rule-item"><b>8.</b> Bonuslar ertesi gün ajans sahibine iletilir.</div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
