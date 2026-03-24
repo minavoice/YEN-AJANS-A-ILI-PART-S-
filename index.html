@@ -147,7 +147,86 @@
             <div class="rule"><b>6.</b> Başvuru 1 gün önceden yapılmalıdır. Zaman dilimi TSİ'dir.</div>
             <div class="rule"><b>7.</b> Hileli işlemlerde bonuslar gönderilmez.</div>
             <div class="rule"><b>8.</b> Bonuslar ertesi gün iletilir. VIP bonusu tüm ajans içindir.</div>
+            <div class="contact-footer">
+        <div class="warning-icon-wrapper">
+            <span class="warning-pulse">!</span>
         </div>
+        <div class="contact-content">
+            <p class="contact-text">BAŞVURU İÇİN <span>[ ID: TR01 - TR02 ]</span> İLETİŞİME GEÇİNİZ</p>
+        </div>
+    </div>
+
+    <style>
+        .contact-footer {
+            margin-top: 60px;
+            padding: 30px;
+            background: linear-gradient(90deg, rgba(227, 10, 23, 0.2) 0%, rgba(0, 0, 0, 0.6) 100%);
+            border: 2px dashed var(--tr-red);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            animation: borderGlow 2s infinite alternate;
+        }
+
+        .warning-icon-wrapper {
+            position: relative;
+            width: 60px;
+            height: 60px;
+            background: var(--tr-red);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 30px rgba(227, 10, 23, 0.6);
+        }
+
+        .warning-pulse {
+            font-size: 35px;
+            font-weight: 900;
+            color: white;
+            animation: iconBlast 0.6s infinite alternate;
+        }
+
+        .contact-content {
+            text-align: center;
+        }
+
+        .contact-text {
+            font-size: 1.6rem;
+            font-weight: 800;
+            margin: 0;
+            letter-spacing: 1px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .contact-text span {
+            color: var(--gold);
+            background: rgba(255, 215, 0, 0.1);
+            padding: 5px 15px;
+            border-radius: 10px;
+            border: 1px solid var(--gold);
+        }
+
+        /* Patlama ve Parlama Efektleri */
+        @keyframes iconBlast {
+            0% { transform: scale(0.9); opacity: 0.8; }
+            100% { transform: scale(1.2); opacity: 1; text-shadow: 0 0 15px white; }
+        }
+
+        @keyframes borderGlow {
+            0% { box-shadow: 0 0 10px rgba(227, 10, 23, 0.2); }
+            100% { box-shadow: 0 0 30px rgba(227, 10, 23, 0.5); border-color: #fff; }
+        }
+
+        @media (max-width: 768px) {
+            .contact-footer { flex-direction: column; text-align: center; }
+            .contact-text { font-size: 1.2rem; }
+        }
+    </style>
+            
+     </div>
     </div>
 </div>
 
