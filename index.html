@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Malkafa | Ajans Açılış Partisi</title>
+    <title>minavoice | Ajans Açılış Partisi</title>
     <style>
         :root {
             --tr-red: #e30a17;
@@ -23,34 +23,38 @@
             overflow-x: hidden;
         }
 
-        /* DİL SEÇİCİ */
+        /* DİL SEÇİCİ - CANLI RENKLER */
         .lang-selector {
             display: flex;
             justify-content: center;
-            gap: 20px;
+            gap: 25px;
             padding: 20px;
             position: sticky;
             top: 0;
             z-index: 100;
-            background: rgba(10, 11, 16, 0.8);
+            background: rgba(10, 11, 16, 0.85);
             backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
         }
+        
         .lang-btn {
             cursor: pointer;
-            font-size: 28px;
-            transition: 0.3s;
-            filter: grayscale(1) opacity(0.5);
+            font-size: 32px;
+            transition: all 0.3s ease;
+            opacity: 0.7;
         }
-        .lang-btn.active {
+        
+        .lang-btn:hover, .lang-btn.active {
+            opacity: 1;
             transform: scale(1.3);
-            filter: grayscale(0) opacity(1);
+            text-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
         }
 
         .container { max-width: 1100px; margin: 0 auto; padding: 20px 15px; }
 
         header { text-align: center; margin-bottom: 50px; }
         .main-title { font-size: clamp(1.6rem, 5vw, 2.8rem); font-weight: 900; text-transform: uppercase; margin: 0; letter-spacing: 2px; }
-        .date-badge { background: var(--tr-red); padding: 8px 20px; border-radius: 50px; font-weight: 800; display: inline-block; margin-top: 15px; }
+        .date-badge { background: var(--tr-red); padding: 8px 20px; border-radius: 50px; font-weight: 800; display: inline-block; margin-top: 15px; box-shadow: 0 4px 15px rgba(227, 10, 23, 0.3); }
 
         /* ÖDÜL KARTLARI */
         .grid {
@@ -66,19 +70,19 @@
             border-radius: 24px;
             padding: 25px;
             backdrop-filter: blur(12px);
-            transition: 0.4s;
+            transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             text-align: center;
         }
 
-        .card:hover { transform: translateY(-10px); border-color: var(--tr-red); background: rgba(255,255,255,0.08); }
-        .card.premium { border: 2px solid var(--gold); box-shadow: 0 0 20px rgba(255, 215, 0, 0.2); }
+        .card:hover { transform: translateY(-10px); border-color: var(--tr-red); background: rgba(255,255,255,0.08); box-shadow: 0 10px 30px rgba(227, 10, 23, 0.1); }
+        .card.premium { border: 2px solid var(--gold); box-shadow: 0 0 25px rgba(255, 215, 0, 0.15); background: rgba(255, 215, 0, 0.02); }
 
-        .puan-header { font-size: 1.8rem; font-weight: 900; color: var(--gold); display: block; margin-bottom: 15px; border-bottom: 1px solid var(--tr-red); padding-bottom: 10px; }
+        .puan-header { font-size: 1.8rem; font-weight: 900; color: var(--gold); display: block; margin-bottom: 15px; border-bottom: 1px solid var(--tr-red); padding-bottom: 10px; text-shadow: 0 2px 10px rgba(255, 215, 0, 0.3); }
         
-        .stat-item { display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.08); }
-        .stat-item span { color: #aaa; font-size: 0.9rem; }
+        .stat-item { display: flex; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.08); }
+        .stat-item span { color: #aaa; font-size: 0.9rem; font-weight: 500; }
         .stat-item b { color: #fff; font-size: 0.95rem; }
-        .vip-val { color: var(--cyan) !important; font-weight: 800; }
+        .vip-val { color: var(--cyan) !important; font-weight: 800; text-shadow: 0 0 5px rgba(0, 242, 255, 0.4); }
         .special-val { color: #ff00ff !important; font-weight: 800; }
 
         /* KURALLAR */
@@ -86,30 +90,32 @@
             background: rgba(255, 255, 255, 0.02);
             border-radius: 25px;
             padding: 30px;
-            border: 1px solid rgba(227, 10, 23, 0.3);
+            border: 1px solid rgba(227, 10, 23, 0.2);
             margin-bottom: 50px;
         }
-        .rules-section h2 { color: var(--tr-red); text-transform: uppercase; margin-bottom: 20px; }
-        .rules-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 15px; }
-        .rule { display: flex; gap: 10px; font-size: 0.9rem; color: #ddd; }
-        .rule b { color: var(--tr-red); }
+        .rules-section h2 { color: var(--tr-red); text-transform: uppercase; margin-bottom: 25px; font-size: 1.6rem; }
+        .rules-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 18px; }
+        .rule { display: flex; gap: 12px; font-size: 0.95rem; color: #ddd; line-height: 1.5; }
+        .rule b { color: var(--tr-red); font-size: 1.1rem; }
 
         /* İLETİŞİM KUTUSU */
         .contact-card {
             margin: 40px auto;
-            max-width: 450px;
+            max-width: 480px;
             background: #000;
             border: 3px solid var(--tr-red);
-            border-radius: 30px;
-            padding: 30px;
+            border-radius: 35px;
+            padding: 35px;
             text-align: center;
             animation: pulse 2s infinite ease-in-out;
         }
         @keyframes pulse {
             0%, 100% { transform: scale(1); box-shadow: 0 0 15px rgba(227, 10, 23, 0.4); }
-            50% { transform: scale(1.03); box-shadow: 0 0 30px rgba(227, 10, 23, 0.8); }
+            50% { transform: scale(1.03); box-shadow: 0 0 35px rgba(227, 10, 23, 0.7); }
         }
-        .id-box { border: 2px solid var(--gold); color: var(--gold); padding: 10px 20px; border-radius: 12px; font-size: 1.6rem; font-weight: 900; display: inline-block; margin: 15px 0; }
+        .id-box { 
+            background: linear-gradient(135deg, rgba(255,215,0,0.15), transparent);
+            border: 2px solid var(--gold); color: var(--gold); padding: 12px 25px; border-radius: 15px; font-size: 1.6rem; font-weight: 900; display: inline-block; margin: 18px 0; letter-spacing: 2px; }
 
         @media (max-width: 600px) { .grid { grid-template-columns: 1fr; } }
     </style>
@@ -117,8 +123,8 @@
 <body>
 
     <div class="lang-selector">
-        <span class="lang-btn active" id="btn-tr" onclick="setLanguage('tr')">🇹🇷</span>
-        <span class="lang-btn" id="btn-az" onclick="setLanguage('az')">🇦🇿</span>
+        <span class="lang-btn active" id="btn-tr" onclick="setLanguage('tr')" title="Türkçe">🇹🇷</span>
+        <span class="lang-btn" id="btn-az" onclick="setLanguage('az')" title="Azərbaycan">🇦🇿</span>
     </div>
 
     <div class="container">
@@ -127,19 +133,17 @@
             <div class="date-badge" id="txt-date">📅 06.03.2026 - 31.05.2026</div>
         </header>
 
-        <div class="grid" id="awards-grid">
-            </div>
+        <div class="grid" id="awards-grid"></div>
 
         <div class="rules-section">
             <h2 id="txt-rules-h">📌 Kurallar ve Şartlar</h2>
-            <div class="rules-grid" id="rules-container">
-                </div>
+            <div class="rules-grid" id="rules-container"></div>
         </div>
 
         <div class="contact-card">
-            <h3 id="txt-contact-1" style="margin:0">BAŞVURU VE BİLGİ İÇİN</h3>
-            <div class="id-box">ID: TR01 - TR02</div>
-            <h3 id="txt-contact-2" style="margin:0">YÖNETİMLE İLETİŞİME GEÇİNİZ</h3>
+            <h3 id="txt-contact-1" style="margin:0; color:#fff;">BAŞVURU VE BİLGİ İÇİN</h3>
+            <div class="id-box" id="txt-id-box">ID: TR01 - TR02</div>
+            <h3 id="txt-contact-2" style="margin:0; color:#fff;">YÖNETİMLE İLETİŞİME GEÇİNİZ</h3>
         </div>
     </div>
 
@@ -151,6 +155,7 @@
                 rules_h: "📌 Kurallar ve Şartlar",
                 contact_1: "BAŞVURU VE BİLGİ İÇİN",
                 contact_2: "YÖNETİMLE İLETİŞİME GEÇİNİZ",
+                id_list: "ID: TR01 - TR02",
                 labels: ["Aktive Yayıncı", "Coin Bonusu", "VIP Ödülü", "Özel Destek"],
                 rules: [
                     "Her ajans açılış etkinliğine yalnızca bir kez katılabilir.",
@@ -178,6 +183,7 @@
                 rules_h: "📌 Qaydalar və Şərtlər",
                 contact_1: "MÜRACİƏT VƏ MƏLUMAT ÜÇÜN",
                 contact_2: "RƏHBƏRLİKLƏ ƏLAQƏ SAXLAYIN",
+                id_list: "ID: TR01 - AZ01 - AZ02",
                 labels: ["Aktiv Yayımçı", "Coin Bonusu", "VIP Mükafatı", "Xüsusi Dəstək"],
                 rules: [
                     "Hər bir agentlik açılış tədbirinə yalnız bir dəfə qatıla bilər.",
@@ -211,8 +217,8 @@
             document.getElementById('txt-rules-h').innerText = data.rules_h;
             document.getElementById('txt-contact-1').innerText = data.contact_1;
             document.getElementById('txt-contact-2').innerText = data.contact_2;
+            document.getElementById('txt-id-box').innerText = data.id_list;
 
-            // Kartları Yükle
             const grid = document.getElementById('awards-grid');
             grid.innerHTML = '';
             data.awards.forEach(item => {
@@ -227,7 +233,6 @@
                 `;
             });
 
-            // Kuralları Yükle
             const rulesBox = document.getElementById('rules-container');
             rulesBox.innerHTML = '';
             data.rules.forEach((r, index) => {
@@ -239,4 +244,3 @@
     </script>
 </body>
 </html>
-
